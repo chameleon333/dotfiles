@@ -9,3 +9,8 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"eval $(/opt/homebrew/bin/brew shellenv)
+
+# Set bash-completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
