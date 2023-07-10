@@ -8,6 +8,10 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
     [[ "$dotfile" == "${SCRIPT_DIR}/.DS_Store" ]] && continue
 
     ln -fnsv "$dotfile" "$HOME"
+    echo "hello $dotfile";
 done
 
+echo "finished";
+
 source ~/.zprofile
+echo "finished";

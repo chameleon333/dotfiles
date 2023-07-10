@@ -31,8 +31,8 @@ function app_dl_curl {
   fi
 }
 
-# DisplayLink Manager
-app_dl_web "DisplayLink Manager" https://www.synaptics.com/products/displaylink-graphics/downloads/macos
+# # DisplayLink Manager
+# app_dl_web "DisplayLink Manager" https://www.synaptics.com/products/displaylink-graphics/downloads/macos
 
-# Logi Options+
-app_dl_curl "Logi Options+" https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip
+# # Logi Options+
+# app_dl_curl "Logi Options+" https://download01.logi.com/web/ftp/pub/techsupport/optionsplus/logioptionsplus_installer.zip

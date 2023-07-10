@@ -1,7 +1,7 @@
 [user]
 	name = ryota-k0827
 	email = 50436249+ryota-k0827@users.noreply.github.com
-	signingkey = /Users/ryota/.ssh/signing-key.pub
+	signingkey = /Users/kaneta-yusei/.ssh/id_rsa.pub
 [core]
 	excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
