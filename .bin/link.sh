@@ -11,7 +11,4 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
     echo "hello $dotfile";
 done
 
-echo "finished";
-
 source ~/.zprofile
-echo "finished";
