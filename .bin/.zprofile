@@ -8,4 +8,5 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # Set rbenv
 [[ -d ~/.rbenv  ]] && \
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
-  eval "$(rbenv init -)"eval $(/opt/homebrew/bin/brew shellenv)
+  eval "$(rbenv init -)"eval $(/opt/homebrew/bin/brew shellenv)eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"

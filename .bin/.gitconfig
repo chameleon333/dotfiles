@@ -1,12 +1,12 @@
 [user]
 	name = chameleon333
 	email = uta3chame@gmail.com
-	signingkey = /Users/kaneta-yusei/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_rsa.pub
 [core]
 	excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

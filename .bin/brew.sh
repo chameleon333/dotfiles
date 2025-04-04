@@ -1,5 +1,21 @@
 #!/bin/zsh
 
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null; then
+  echo "🔧 Homebrew is not installed. Installing now..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Add Homebrew to PATH for Apple Silicon
+  if [ -d "/opt/homebrew/bin" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  # Add Homebrew to PATH for Intel Mac
+  elif [ -d "/usr/local/bin" ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+    echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
+  fi
+fi
+
 # Check operating system
 if [ "$(uname)" != "Darwin" ] ; then
 	echo "Not macOS!"

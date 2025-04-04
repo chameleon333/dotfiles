@@ -8,7 +8,8 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
     [[ "$dotfile" == "${SCRIPT_DIR}/.DS_Store" ]] && continue
 
     ln -fnsv "$dotfile" "$HOME"
-    echo "hello $dotfile";
+    echo "hello $dotfile"
 done
 
-source ~/.zprofile
+# source ~/.zprofile だと失敗することがあるので、安全に呼ぶ or 明示メッセージ
+echo "✅ Dotfiles linked. Please run: source ~/.zprofile"
