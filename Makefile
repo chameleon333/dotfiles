@@ -16,11 +16,11 @@ zsh: ## ~/.zshrc をリンク
 
 .PHONY: zplug
 zplug: ## zplug をインストール（必要時のみ）
-	@if [ ! -f "$$HOME/.zplug/init.zsh" ]; then \
+	@if [ -f "$$HOME/.zplug/init.zsh" ] || [ -f "/opt/homebrew/opt/zplug/init.zsh" ]; then \
+		echo "✅ zplug already installed."; \
+	else \
 		echo "📦 Installing zplug..."; \
 		curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh; \
-	else \
-		echo "✅ zplug already installed."; \
 	fi
 
 # ==== macOS 設定 ====
