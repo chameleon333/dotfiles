@@ -8,14 +8,14 @@ This repository contains scripts to set macOS.
 
 ```shell
 % sw_vers
-ProductName:	macOS
-ProductVersion:	12.6.1
-BuildVersion:	21G217
+ProductName:            macOS
+ProductVersion:         14.7.6
+BuildVersion:           23H626
 ```
 
 ```shell
 % zsh --version
-zsh 5.8.1 (x86_64-apple-darwin21.0)
+zsh 5.9 (x86_64-apple-darwin23.0)
 ```
 
 ## Install
@@ -31,16 +31,3 @@ Set macOS.
 ```shell
 % cd ~/dotfiles && make
 ```
-
-Set iterm2.
-
-1. Press `command + ,` on iterm2.
-2. Click `General` tab.
-3. Click `Preferences` tab.
-4. Turn on `Load preference from a custom folder or URL.`
-5. Enter `~/dotfiles/iterm/com.googlecode.iterm2.plist`.
-6. Execute `sudo killall cfprefsd`.
-
-## License
-
-[MIT](LICENSE)

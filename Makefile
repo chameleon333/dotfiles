@@ -1,38 +1,52 @@
-# Do everything.
-all: init link defaults brew setup other_apps
+# .dotfiles/Makefile
 
-# Set initial preference.
-init:
-	@echo "\033[0;34mRun init.sh\033[0m"
-	@.bin/init.sh
-	@echo "\033[0;34mDone.\033[0m"
+SHELL := /bin/zsh
 
-# Link dotfiles.
-link:
-	@echo "\033[0;34mRun link.sh\033[0m"
-	@.bin/link.sh
-	@echo "\033[0;32mDone.\033[0m"
+# ==== エントリーポイント ====
 
-# Set macOS system preferences.
-defaults:
-	@echo "\033[0;34mRun defaults.sh\033[0m"
-	@.bin/defaults.sh
-	@echo "\033[0;32mDone.\033[0m"
+.PHONY: all
+all: zsh zplug macos ## 一括セットアップ
 
-# Install macOS applications.
-brew:
-	@echo "\033[0;34mRun brew.sh\033[0m"
-	@.bin/brew.sh
-	@echo "\033[0;32mDone.\033[0m"
+# ==== ZSH ====
 
-# Setup tools.
-setup:
-	@echo "\033[0;34mRun setup.sh\033[0m"
-	@.bin/setup.sh
-	@echo "\033[0;32mDone.\033[0m"
+.PHONY: zsh
+zsh: ## ~/.zshrc をリンク
+	@echo "🔗 Linking zshrc..."
+	ln -sf $(PWD)/zsh/zshrc ~/.zshrc
 
-# Setup Other apps
-other_apps:
-	@echo "\033[0;34mRun other_apps.sh\033[0m"
-	@.bin/other_apps.sh
-	@echo "\033[0;32mDone.\033[0m"
+.PHONY: zplug
+zplug: ## zplug をインストール（必要時のみ）
+	@if [ ! -f "$$HOME/.zplug/init.zsh" ]; then \
+		echo "📦 Installing zplug..."; \
+		curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh; \
+	else \
+		echo "✅ zplug already installed."; \
+	fi
+
+# ==== macOS 設定 ====
+
+.PHONY: macos
+macos: ## macOS の設定適用
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		echo "🍎 Applying macOS defaults..."; \
+		zsh $(PWD)/macos/defaults.zsh; \
+	else \
+		echo "❌ Not macOS. Skipping macOS settings."; \
+	fi
+
+# ==== Homebrew ====
+
+.PHONY: brew
+brew: ## Brewfile を使ってパッケージをインストール
+	@if [ -f Brewfile ]; then \
+		echo "🍺 Installing from Brewfile..."; \
+		brew bundle; \
+	else \
+		echo "❌ Brewfile not found."; \
+	fi
+
+# ==== クリーンアップ ====
+
+.PHONY: clean
+clean: ## シンボリックリンクを削除
+	rm -f ~/.zshrc
