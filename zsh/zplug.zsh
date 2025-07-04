@@ -24,5 +24,12 @@ zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 zplug "mrowa44/emojify", as:command
 
+# Homebrew関連
+zplug "Homebrew/brew", use:"completions/zsh/_brew"
+
+# Docker関連
+zplug "docker/cli", use:"contrib/completion/zsh/_docker"
+zplug "docker/compose", use:"contrib/completion/zsh/_docker-compose"
+
 # プラグインをロード
 zplug load

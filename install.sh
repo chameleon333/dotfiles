@@ -15,6 +15,9 @@ fi
 if [ "$(uname)" == "Darwin" ]; then
   echo "🍎 Applying macOS defaults..."
   zsh ~/.dotfiles/macos/defaults.zsh
+
+  echo "🍺 Setting up Homebrew..."
+  zsh ~/.dotfiles/macos/brew.zsh
 fi
 
 echo "✅ Done!"
